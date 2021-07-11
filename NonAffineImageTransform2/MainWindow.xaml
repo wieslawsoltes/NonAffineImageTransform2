@@ -1,0 +1,50 @@
+﻿<Window x:Class="NonAffineImageTransform2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NonAffineImageTransform2"
+        mc:Ignorable="d"
+        Title="Non-Affine Image Transform # 2 (Drag Corners!)" Height="450" Width="800">
+  <Viewport3D Name="viewport3d">
+    <ModelVisual3D>
+      <ModelVisual3D.Content>
+        <Model3DGroup>
+          <GeometryModel3D>
+            <GeometryModel3D.Geometry>
+
+              <!-- Rectangle. -->
+              <MeshGeometry3D x:Name="mesh"
+                              Positions="0 0 0, 0 1 0, 1 0 0, 1 1 0"
+                              TextureCoordinates="0 1, 0 0, 1 1, 1 0" 
+                              TriangleIndices="0 2 1, 2 3 1" />
+            </GeometryModel3D.Geometry>
+    
+            <GeometryModel3D.Material>
+              <DiffuseMaterial>
+                <DiffuseMaterial.Brush>
+                  <ImageBrush ImageSource="PetzoldTattoo.jpg" />
+                </DiffuseMaterial.Brush>
+              </DiffuseMaterial>
+            </GeometryModel3D.Material>
+
+            <GeometryModel3D.Transform>
+              <MatrixTransform3D x:Name="xform" />                            
+            </GeometryModel3D.Transform>
+          </GeometryModel3D>
+
+          <!-- Light source. -->
+          <AmbientLight Color="White" />
+        </Model3DGroup>
+      </ModelVisual3D.Content>
+    </ModelVisual3D>
+
+    <!-- Camera. -->
+    <Viewport3D.Camera>
+      <OrthographicCamera Position="0.5 0.5 1"
+                          LookDirection="0 0 -1"
+                          UpDirection="0 1 0"
+                          Width="5" />
+    </Viewport3D.Camera>
+  </Viewport3D>
+</Window>
